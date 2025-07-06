@@ -49,7 +49,7 @@ function Admin() {
           "Content-Type": "multipart/form-data",
           token: localStorage.getItem("token") || "",
         },
-        withCredentials: true,
+        // withCredentials: true,
       });
       toast.success(data.message);
       fetchAlbums();
@@ -84,7 +84,7 @@ function Admin() {
           "Content-Type": "multipart/form-data",
           token: localStorage.getItem("token") || "",
         },
-        withCredentials: true,
+        // withCredentials: true,
       });
       toast.success(data.message);
       fetchSongs();
@@ -118,7 +118,7 @@ function Admin() {
             "Content-Type": "multipart/form-data",
             token: localStorage.getItem("token") || "",
           },
-          withCredentials: true,
+          // withCredentials: true,
         }
       );
       toast.success(data.message);

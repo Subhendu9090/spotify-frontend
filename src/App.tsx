@@ -7,9 +7,28 @@ import Register from "./pages/Register";
 import Album from "./pages/Album";
 import PlayList from "./pages/PlayList";
 import Admin from "./pages/Admin";
+import { useEffect } from "react";
+
+const user_service = import.meta.env.VITE_USER_SERVICE_URI;
+const song_service = import.meta.env.VITE_SONG_SERVICE_URI;
+const admin_service = import.meta.env.VITE_ADMIN_SERVICE_URI;
 
 function App() {
   const { loading, isAuth } = useUserData();
+  const checkAllServices = async () => {
+    try {
+      await Promise.all([
+        fetch(`${user_service}/check`),
+        fetch(`${song_service}/check`),
+        fetch(`${admin_service}/check`),
+      ]);
+    } catch (error) {
+      console.log("Check", error);
+    }
+  };
+  useEffect(() => {
+    checkAllServices();
+  }, []);
   return (
     <>
       {loading ? (
